@@ -5,43 +5,45 @@ public type Chalk object {
     private {
         Color foregroundColor;
         Color backgroundColor;
-        boolean italicized;
-        boolean underlined;
+        boolean isItalicized;
+        boolean isUnderlined;
         boolean isLight;
         boolean isDark;
         boolean isReversed;
     }
 
     public new(foregroundColor, backgroundColor, boolean italicize = false, boolean underline = false) {
-        italicized = italicize;
-        underlined = underline;
+        isItalicized = italicize;
+        isUnderlined = underline;
     }
 
     public function italicize() returns Chalk {
-        italicized = true;
+        isItalicized = true;
         return self;
     }
 
     public function underline() returns Chalk {
-        underlined = true;
+        isUnderlined = true;
         return self;
     }
 
     public function dark() returns Chalk {
+        isLight = false;
         isDark = true;
         return self;
     }
 
     public function light() returns Chalk {
         isLight = true;
+        isDark = false;
         return self;
     }
 
     public function normal() returns Chalk {
         isLight = false;
         isDark = false;
-        italicized = false;
-        underlined = false;
+        isItalicized = false;
+        isUnderlined = false;
         isReversed = false;
         return self;
     }
@@ -63,9 +65,9 @@ public type Chalk object {
 
     public function withProperty(Property property, Color|boolean value) returns Chalk {
         if (property == ITALIC) {
-            italicized = getBoolean(property, value);
+            isItalicized = getBoolean(property, value);
         } else if (property == UNDERLINE) {
-            underlined = getBoolean(property, value);
+            isUnderlined = getBoolean(property, value);
         } else if (property == LIGHT) {
             isLight = getBoolean(property, value);
         } else if (property == DARK) {
@@ -86,46 +88,51 @@ public type Chalk object {
         // Get the background color index.
         int backgroundColorIndex = getColorIndex(backgroundColor);
 
-        string coloredString;
+        string colorizedString;
         // First, we append the forground color code. Then we append the background color code.
-        coloredString += ESCAPE_PREFIX;
-        // Add light property.
+        colorizedString += ESCAPE_PREFIX;
+        // Append light color code.
         if (isLight){
-            coloredString += LIGHT_CODE;
+            colorizedString += LIGHT_CODE;
         }
-        // Add dark property.
+        // Append dark code.
         if (isDark){
-            coloredString += DARK_CODE;
+            colorizedString += DARK_CODE;
         }
-        // Add italicized property.
-        if (italicized){
-            coloredString += ITALIC_CODE;
+        // Append italic code.
+        if (isItalicized){
+            colorizedString += ITALIC_CODE;
         }
-        // Add underlined property.
-        if (underlined){
-            coloredString += UNDERLINE_CODE;
+        // Append underline code.
+        if (isUnderlined){
+            colorizedString += UNDERLINE_CODE;
         }
-        // Add reversed property.
+        // Append reversed code.
         if (isReversed){
-            coloredString += REVERSE_CODE;
+            colorizedString += REVERSE_CODE;
         }
         // Append the forground color only if it is not set to default color.
         if (foregroundColorIndex != -1){
-            coloredString += FORGROUND_COLOR_CODES[foregroundColorIndex];
+            // Append the foreground color.
+            colorizedString += FORGROUND_COLOR_CODES[foregroundColorIndex];
+        } else {
+            colorizedString += RESET_CODE;
         }
-        coloredString += ESCAPE_SUFFIX;
+        // Append the escape suffix.
+        colorizedString += ESCAPE_SUFFIX;
         // Append the background color only if it is not set to default color.
         if (backgroundColorIndex != -1){
             // Append the background color.
-            coloredString += (ESCAPE_PREFIX + BACKGROUND_COLOR_CODES[backgroundColorIndex] + ESCAPE_SUFFIX);
+            colorizedString += (ESCAPE_PREFIX + BACKGROUND_COLOR_CODES[backgroundColorIndex] + ESCAPE_SUFFIX);
         }
 
         // Append the text.
-        coloredString += text;
+        colorizedString += text;
+
         // Append the reset code.
-        coloredString += RESET_ALL_CODE;
-        // Return the string.
-        return coloredString;
+        colorizedString += RESET_ALL_CODE;
+        // Return the colorized string.
+        return colorizedString;
     }
 
     function getColorIndex(Color color) returns int {
