@@ -89,7 +89,8 @@ public type Chalk object {
         int backgroundColorIndex = getColorIndex(backgroundColor);
 
         string colorizedString;
-        // First, we append the forground color code. Then we append the background color code.
+        // First, we append property flags. Then the forground color code. After that, we append the background color
+        // code.
         colorizedString += ESCAPE_PREFIX;
         // Append light color code.
         if (isLight){
@@ -115,25 +116,16 @@ public type Chalk object {
         if (foregroundColorIndex != -1){
             // Append the foreground color.
             colorizedString += FORGROUND_COLOR_CODES[foregroundColorIndex];
-        } else {
-            colorizedString += RESET_CODE;
         }
-        // Append the escape suffix.
-        colorizedString += ESCAPE_SUFFIX;
+
         // Append the background color only if it is not set to default color.
         if (backgroundColorIndex != -1){
             // Append the background color.
-            colorizedString += ESCAPE_PREFIX;
-            // Append light color code.
-            if (isLight){
-                colorizedString += LIGHT_CODE;
-            }
-            // Append dark code.
-            if (isDark){
-                colorizedString += DARK_CODE;
-            }
-            colorizedString += BACKGROUND_COLOR_CODES[backgroundColorIndex] + ESCAPE_SUFFIX;
+            colorizedString += BACKGROUND_COLOR_CODES[backgroundColorIndex];
         }
+
+        // Append the escape suffix.
+        colorizedString += ESCAPE_SUFFIX;
 
         // Append the text.
         colorizedString += text;
