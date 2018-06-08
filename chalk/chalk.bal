@@ -123,7 +123,16 @@ public type Chalk object {
         // Append the background color only if it is not set to default color.
         if (backgroundColorIndex != -1){
             // Append the background color.
-            colorizedString += (ESCAPE_PREFIX + BACKGROUND_COLOR_CODES[backgroundColorIndex] + ESCAPE_SUFFIX);
+            colorizedString += ESCAPE_PREFIX;
+            // Append light color code.
+            if (isLight){
+                colorizedString += LIGHT_CODE;
+            }
+            // Append dark code.
+            if (isDark){
+                colorizedString += DARK_CODE;
+            }
+            colorizedString += BACKGROUND_COLOR_CODES[backgroundColorIndex] + ESCAPE_SUFFIX;
         }
 
         // Append the text.
