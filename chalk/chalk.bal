@@ -1,5 +1,8 @@
 import ballerina/io;
 
+documentation {
+    Represents a chalk which provides text colorization capabilities.
+}
 public type Chalk object {
 
     private {
@@ -12,55 +15,97 @@ public type Chalk object {
         boolean isReversed;
     }
 
+    documentation {
+        Creates a new chalk object.
+
+        P{{foregroundColor}} Foreground color.
+        P{{backgroundColor}} Background color.
+        P{{italicize}}       Boolean to indicate whether the texts should be italicized or not.
+        P{{underline}}       Boolean to indicate whether the texts should be is underlined or not.
+    }
     public new(foregroundColor, backgroundColor, boolean italicize = false, boolean underline = false) {
         isItalicized = italicize;
         isUnderlined = underline;
     }
 
+    documentation {
+        Italicize the text if it is not already italicizided.
+    }
     public function italicize() returns Chalk {
         isItalicized = true;
         return self;
     }
 
+    documentation {
+        Underlines the text if it is not already italicizided.
+    }
     public function underline() returns Chalk {
         isUnderlined = true;
         return self;
     }
 
+    documentation {
+        Make the foreground and background darker than normal.
+    }
     public function dark() returns Chalk {
         isLight = false;
         isDark = true;
         return self;
     }
 
+    documentation {
+        Make the foreground and background lighter than normal.
+    }
     public function light() returns Chalk {
         isLight = true;
         isDark = false;
         return self;
     }
 
+    documentation {
+        Reset foreground and background properties to the normal settings except for the colors.
+    }
     public function normal() returns Chalk {
         isLight = false;
         isDark = false;
         isItalicized = false;
         isUnderlined = false;
-        isReversed = false;
         return self;
     }
 
+    documentation {
+        Swaps the foreground and background colors.
+    }
     public function reverse() returns Chalk {
         isReversed = true;
         return self;
     }
 
+    documentation {
+        Sets the foreground color to the provided color.
+
+        P{{color}} A color.
+    }
     public function foreground(Color color) returns Chalk {
         foregroundColor = color;
         return self;
     }
 
+    documentation {
+        Sets the background color to the provided color.
+
+        P{{color}} A color.
+    }
     public function background(Color color) returns Chalk {
         backgroundColor = color;
         return self;
+    }
+
+    documentation {
+        Updates the text properties.
+
+        P{{property}} a property
+        P{{value}} if the property
     }
 
     public function withProperty(Property property, Color|boolean value) returns Chalk {
@@ -82,6 +127,12 @@ public type Chalk object {
         return self;
     }
 
+    documentation {
+        Colorizes the given text.
+
+        P{{text}} Text which needs to be colorized.
+        R{{}}     Returns the colorized text.
+    }
     public function write(string text) returns string {
         // Get the forground color index.
         int foregroundColorIndex = getColorIndex(foregroundColor);
