@@ -116,7 +116,8 @@ public type Chalk object {
     }
 
     documentation {
-        Updates the text properties.
+        Updates the text properties. For FOREGROUND and BACKGROUND properties, a Color is expected as the value. For
+        other properties, a boolean value is expected.
 
         P{{property}} a property
         P{{value}} if the property

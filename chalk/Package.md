@@ -2,7 +2,7 @@
 
 Bring colors to Ballerina programs.
 
-![chalk](resources/sample.png)
+![sample](https://github.com/Shan1024/chalk/blob/master/chalk/resources/sample.png)
 
 ## Supported colors
 
@@ -61,5 +61,6 @@ io:println(colorizedText);
 
 So you can customize the chalk any way you want. Cool, right !!! ;)
 
+See the [example code](https://github.com/Shan1024/chalk/blob/master/chalk/resources/sample.bal) which is used to generate the output in the image above.
 
 [Inspired by the node module with the same name]
