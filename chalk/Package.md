@@ -51,7 +51,7 @@ io:println(colorizedText);
 
 ```
 
-Chained actions are supported.
+Chained invocations are supported.
 
 ```ballerina
 string colorizedText = chalk.dark().italicize().reverse().write("Hello world !!!");
