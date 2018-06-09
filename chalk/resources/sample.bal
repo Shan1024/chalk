@@ -1,7 +1,7 @@
 import ballerina/io;
 
 function main(string... args) {
-    io:println("\n\n");
+    io:println("\n");
 
     Chalk chalk = new(DEFAULT, DEFAULT);
 
@@ -13,43 +13,54 @@ function main(string... args) {
     io:print(chalk.dark().write("dark"));
     io:print(" ");
 
+    // Italicize the text.
+    chalk = chalk.italicize();
+
     io:println();
-    io:print(chalk.normal().italicize().write("italic"));
+    io:print(chalk.normal().write("italic"));
     io:print("   ");
-    io:print(chalk.light().italicize().write("Hello"));
+    io:print(chalk.light().write("Hello"));
     io:print(" ");
-    io:print(chalk.normal().italicize().write("Hello"));
+    io:print(chalk.normal().write("Hello"));
     io:print(" ");
-    io:print(chalk.dark().italicize().write("Hello"));
+    io:print(chalk.dark().write("Hello"));
     io:println();
 
-    io:print(chalk.normal().underline().write("undeline"));
+    // Remove italic and enble underlines.
+    chalk = chalk.withProperty(ITALIC, false).underline();
+
+    io:print(chalk.normal().write("undeline"));
     io:print(" ");
-    io:print(chalk.light().underline().write("Hello"));
+    io:print(chalk.light().write("Hello"));
     io:print(" ");
-    io:print(chalk.normal().underline().write("Hello"));
+    io:print(chalk.normal().write("Hello"));
     io:print(" ");
-    io:print(chalk.dark().underline().write("Hello"));
+    io:print(chalk.dark().write("Hello"));
     io:println();
+
+    // Enable italic as well.
+    chalk = chalk.italicize();
 
     io:print("ita/und  ");
-    io:print(chalk.light().italicize().underline().write("Hello"));
+    io:print(chalk.light().write("Hello"));
     io:print(" ");
-    io:print(chalk.normal().italicize().underline().write("Hello"));
+    io:print(chalk.normal().write("Hello"));
     io:print(" ");
-    io:print(chalk.dark().italicize().underline().write("Hello"));
+    io:print(chalk.dark().write("Hello"));
     io:println();
 
-    chalk = chalk.reverse();
+    // Remove italic and underline properties and reverse the colors.
+    chalk = chalk.withProperty(ITALIC, false).withProperty(UNDERLINE, false).reverse();
 
     io:print("Reverse  ");
-    io:print(chalk.light().italicize().underline().write("Hello"));
+    io:print(chalk.light().write("Hello"));
     io:print(" ");
-    io:print(chalk.normal().italicize().underline().write("Hello"));
+    io:print(chalk.normal().write("Hello"));
     io:print(" ");
-    io:print(chalk.dark().italicize().underline().write("Hello"));
+    io:print(chalk.dark().write("Hello"));
     io:println();
 
+    // Create a new chalk with default colors.
     chalk = new(DEFAULT, DEFAULT);
 
     io:print(chalk.foreground(BLACK).write("fgBlack"));
@@ -69,6 +80,7 @@ function main(string... args) {
     io:print(chalk.foreground(WHITE).write("fgWhite"));
     io:println();
 
+    // Change the foreground to the default color.
     chalk = chalk.foreground(DEFAULT);
 
     io:print(chalk.background(BLACK).write("bgBlack"));
@@ -87,5 +99,5 @@ function main(string... args) {
     io:print(" ");
     io:print(chalk.background(WHITE).write("bgWhite"));
 
-    io:println("\n\n");
+    io:println("\n");
 }
