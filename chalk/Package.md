@@ -4,7 +4,7 @@ Bring colors to Ballerina programs.
 
 ![chalk](resources/sample.png)
 
-##Supported colors
+## Supported colors
 
 1. Black
 2. Red
@@ -15,7 +15,7 @@ Bring colors to Ballerina programs.
 7. Cyan
 8. White
 
-##Supported text properties
+## Supported text properties
 
 1. Underline
 2. Italicize
@@ -23,7 +23,7 @@ Bring colors to Ballerina programs.
 4. Dark color mode
 5. Light color mode
 
-##Sample
+## Sample
 
 First, import the chalk package.
 
