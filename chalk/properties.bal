@@ -1,4 +1,4 @@
-documentation { Represents a text property. }
+documentation { Property types which are used to set properties in . }
 public type Property "FOREGROUND"|"BACKGROUND"|"ITALIC"|"UNDERLINE"|"LIGHT"|"DARK"|"REVERSE";
 
 documentation { Constant for the foreground color property of the text. }

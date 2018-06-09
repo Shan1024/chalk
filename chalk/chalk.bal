@@ -1,7 +1,7 @@
 import ballerina/io;
 
 documentation {
-    Represents a chalk which provides text colorization capabilities.
+    Chalk object which provides text colorization capabilities.
 }
 public type Chalk object {
 
@@ -30,6 +30,8 @@ public type Chalk object {
 
     documentation {
         Italicize the text if it is not already italicizided.
+
+        R{{}} Chalk object with the updated property.
     }
     public function italicize() returns Chalk {
         isItalicized = true;
@@ -38,6 +40,8 @@ public type Chalk object {
 
     documentation {
         Underlines the text if it is not already italicizided.
+
+        R{{}} Chalk object with the updated property.
     }
     public function underline() returns Chalk {
         isUnderlined = true;
@@ -46,6 +50,8 @@ public type Chalk object {
 
     documentation {
         Make the foreground and background darker than normal.
+
+        R{{}} Chalk object with the updated property.
     }
     public function dark() returns Chalk {
         isLight = false;
@@ -55,6 +61,8 @@ public type Chalk object {
 
     documentation {
         Make the foreground and background lighter than normal.
+
+        R{{}} Chalk object with the updated property.
     }
     public function light() returns Chalk {
         isLight = true;
@@ -64,6 +72,8 @@ public type Chalk object {
 
     documentation {
         Reset foreground and background properties to the normal settings except for the colors.
+
+        R{{}} Chalk object with the updated property.
     }
     public function normal() returns Chalk {
         isLight = false;
@@ -75,6 +85,8 @@ public type Chalk object {
 
     documentation {
         Swaps the foreground and background colors.
+
+        R{{}} Chalk object with the updated property.
     }
     public function reverse() returns Chalk {
         isReversed = !isReversed;
@@ -85,6 +97,7 @@ public type Chalk object {
         Sets the foreground color to the provided color.
 
         P{{color}} A color.
+        R{{}} Chalk object with the updated property.
     }
     public function foreground(Color color) returns Chalk {
         foregroundColor = color;
@@ -95,6 +108,7 @@ public type Chalk object {
         Sets the background color to the provided color.
 
         P{{color}} A color.
+        R{{}} Chalk object with the updated property.
     }
     public function background(Color color) returns Chalk {
         backgroundColor = color;
@@ -106,6 +120,7 @@ public type Chalk object {
 
         P{{property}} a property
         P{{value}} if the property
+        R{{}} Chalk object with the updated property.
     }
 
     public function withProperty(Property property, Color|boolean value) returns Chalk {

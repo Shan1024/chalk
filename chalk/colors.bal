@@ -1,4 +1,4 @@
-documentation { Represents a color. }
+documentation { Color type which is used to set colors in chalk object. }
 public type Color "BLACK"|"RED"|"GREEN"|"YELLOW"|"BLUE"|"PURPLE"|"CYAN"|"WHITE"|"DEFAULT";
 
 documentation { Constant for the Black color. }
