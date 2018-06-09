@@ -77,7 +77,7 @@ public type Chalk object {
         Swaps the foreground and background colors.
     }
     public function reverse() returns Chalk {
-        isReversed = true;
+        isReversed = !isReversed;
         return self;
     }
 
