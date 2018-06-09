@@ -71,15 +71,13 @@ public type Chalk object {
     }
 
     documentation {
-        Reset foreground and background properties to the normal settings except for the colors.
+        Reset foreground and background color to the normal.
 
         R{{}} Chalk object with the updated property.
     }
     public function normal() returns Chalk {
         isLight = false;
         isDark = false;
-        isItalicized = false;
-        isUnderlined = false;
         return self;
     }
 
