@@ -2,7 +2,7 @@
 
 Bring colors to Ballerina programs.
 
-![sample](https://github.com/Shan1024/chalk/blob/master/chalk/resources/sample.png)
+![sample](https://raw.githubusercontent.com/Shan1024/chalk/master/chalk/resources/sample.png)
 
 ## Supported colors
 
