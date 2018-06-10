@@ -180,13 +180,13 @@ public type Chalk object {
         // Append the forground color only if it is not set to default color.
         if (foregroundColorIndex != -1){
             // Append the foreground color.
-            colorizedString += FORGROUND_COLOR_CODES[foregroundColorIndex];
+            colorizedString += FORGROUND_COLOR_CODES[foregroundColorIndex] + ";";
         }
 
         // Append the background color only if it is not set to default color.
         if (backgroundColorIndex != -1){
             // Append the background color.
-            colorizedString += BACKGROUND_COLOR_CODES[backgroundColorIndex];
+            colorizedString += BACKGROUND_COLOR_CODES[backgroundColorIndex] + ";";
         }
 
         // Append the escape suffix.
