@@ -5,15 +5,13 @@ documentation {
 }
 public type Chalk object {
 
-    private {
-        Color foregroundColor;
-        Color backgroundColor;
-        boolean isItalicized;
-        boolean isUnderlined;
-        boolean isLight;
-        boolean isDark;
-        boolean isReversed;
-    }
+    private Color foregroundColor;
+    private Color backgroundColor;
+    private boolean isItalicized;
+    private boolean isUnderlined;
+    private boolean isLight;
+    private boolean isDark;
+    private boolean isReversed;
 
     documentation {
         Creates a new chalk object.
