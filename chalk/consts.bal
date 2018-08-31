@@ -10,7 +10,7 @@
 
 @final string REVERSE_CODE = "7;";
 
-@final string ESCAPE_PREFIX = "\033[";
+@final string ESCAPE_PREFIX = "\u001B[";
 @final string ESCAPE_SUFFIX = "m";
 
 @final string RESET_ALL_CODE = ESCAPE_PREFIX + RESET_CODE + ESCAPE_SUFFIX;
