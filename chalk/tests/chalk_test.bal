@@ -24,7 +24,7 @@ function testLightBackgroundColors() {
         string expected = escapeCode + text + RESET_ALL_CODE;
         string actual = chalk.light().write(text);
         io:println(actual);
-        test:assertEquals(actual, expected, msg = io:sprintf("Failed for color %r", colors[i]));
+        test:assertEquals(actual, expected, msg = io:sprintf("Failed for color %s", colors[i]));
     }
 }
 
@@ -41,7 +41,7 @@ function testNormalBackgroundColors() {
         string expected = escapeCode + text + RESET_ALL_CODE;
         string actual = chalk.write(text);
         io:println(actual);
-        test:assertEquals(actual, expected, msg = io:sprintf("Failed for color %r", colors[i]));
+        test:assertEquals(actual, expected, msg = io:sprintf("Failed for color %s", colors[i]));
     }
 }
 
@@ -58,7 +58,7 @@ function testDarkBackgroundColors() {
         string expected = escapeCode + text + RESET_ALL_CODE;
         string actual = chalk.dark().write(text);
         io:println(actual);
-        test:assertEquals(actual, expected, msg = io:sprintf("Failed for color %r", colors[i]));
+        test:assertEquals(actual, expected, msg = io:sprintf("Failed for color %s", colors[i]));
     }
 }
 
@@ -74,7 +74,7 @@ function testLightForgroundColors() {
         string expected = ESCAPE_PREFIX + LIGHT_CODE + codes[i] + ";" + ESCAPE_SUFFIX + text + RESET_ALL_CODE;
         string actual = chalk.light().write(text);
         io:println(actual);
-        test:assertEquals(actual, expected, msg = io:sprintf("Failed for color %r", colors[i]));
+        test:assertEquals(actual, expected, msg = io:sprintf("Failed for color %s", colors[i]));
     }
 }
 
@@ -90,7 +90,7 @@ function testNormalForgroundColors() {
         string expected = ESCAPE_PREFIX + codes[i] + ";" + ESCAPE_SUFFIX + text + RESET_ALL_CODE;
         string actual = chalk.write(text);
         io:println(actual);
-        test:assertEquals(actual, expected, msg = io:sprintf("Failed for color %r", colors[i]));
+        test:assertEquals(actual, expected, msg = io:sprintf("Failed for color %s", colors[i]));
     }
 }
 
@@ -106,7 +106,7 @@ function testDarkForgroundColors() {
         string expected = ESCAPE_PREFIX + DARK_CODE + codes[i] + ";" + ESCAPE_SUFFIX + text + RESET_ALL_CODE;
         string actual = chalk.dark().write(text);
         io:println(actual);
-        test:assertEquals(actual, expected, msg = io:sprintf("Failed for color %r", colors[i]));
+        test:assertEquals(actual, expected, msg = io:sprintf("Failed for color %s", colors[i]));
     }
 }
 
@@ -127,7 +127,7 @@ function testColors() {
                 ESCAPE_SUFFIX + text + RESET_ALL_CODE;
             string actual = chalk.write(text);
             io:println(actual);
-            test:assertEquals(actual, expected, msg = io:sprintf("Failed for color %r", foregroundColors[i]));
+            test:assertEquals(actual, expected, msg = io:sprintf("Failed for color %s", foregroundColors[i]));
         }
     }
 }

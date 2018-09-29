@@ -1,6 +1,6 @@
 import ballerina/io;
 
-function main(string... args) {
+public function main(string... args) {
     io:println("\n");
 
     Chalk chalk = new(DEFAULT, DEFAULT);
